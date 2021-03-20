@@ -1,0 +1,100 @@
+
+[
+    {
+        "product_id": 11,
+        "product_picture": "public/imgs/appliance2/phone1/phone1_1.jpg"
+    },
+    {
+        "product_id": 11,
+        "product_picture": "public/imgs/appliance2/phone1/phone1_2.jpg"
+    },
+    {
+        "product_id": 11,
+        "product_picture": "public/imgs/appliance2/phone1/phone1_3.jpg"
+    },
+    {
+        "product_id": 11,
+        "product_picture": "public/imgs/appliance2/phone1/phone1_4.jpg"
+    },
+    {
+        "product_id": 11,
+        "product_picture": "public/imgs/appliance2/phone1/phone1_5.jpg"
+    },
+    {
+        "product_id": 12,
+        "product_picture": "public/imgs/appliance2/phone2/phone2_1.jpg"
+    },
+    {
+        "product_id": 12,
+        "product_picture": "public/imgs/appliance2/phone2/phone2_2.jpg"
+    },
+    {
+        "product_id": 12,
+        "product_picture": "public/imgs/appliance2/phone2/phone2_3.jpg"
+    },
+    {
+        "product_id": 12,
+        "product_picture": "public/imgs/appliance2/phone2/phone2_4.jpg"
+    },
+    {
+        "product_id": 12,
+        "product_picture": "public/imgs/appliance2/phone2/phone2_5.jpg"
+    },
+    {
+        "product_id": 13,
+        "product_picture": "public/imgs/appliance2/phone3/phone3_1.jpg"
+    },
+    {
+        "product_id": 13,
+        "product_picture": "public/imgs/appliance2/phone3/phone3_2.jpg"
+    },
+    {
+        "product_id": 13,
+        "product_picture": "public/imgs/appliance2/phone3/phone3_3.jpg"
+    },
+    {
+        "product_id": 13,
+        "product_picture": "public/imgs/appliance2/phone3/phone3_4.jpg"
+    },
+    {
+        "product_id": 13,
+        "product_picture": "public/imgs/appliance2/phone3/phone3_5.jpg"
+    },
+    {
+        "product_id": 14,
+        "product_picture": "public/imgs/appliance2/phone4/phone4_1.jpg"
+    },
+    {
+        "product_id": 14,
+        "product_picture": "public/imgs/appliance2/phone4/phone4_2.jpg"
+    },
+    {
+        "product_id": 14,
+        "product_picture": "public/imgs/appliance2/phone4/phone4_3.jpg"
+    },
+    {
+        "product_id": 14,
+        "product_picture": "public/imgs/appliance2/phone4/phone4_4.jpg"
+    },
+    {
+        "product_id": 15,
+        "product_picture": "public/imgs/appliance2/phone1/phone5_1.jpg"
+    },
+    {
+        "product_id": 15,
+        "product_picture": "public/imgs/appliance2/phone1/phone5_2.jpg"
+    },
+    {
+        "product_id": 15,
+        "product_picture": "public/imgs/appliance2/phone1/phone5_3.jpg"
+    },
+    {
+        "product_id": 15,
+        "product_picture": "public/imgs/appliance2/phone1/phone5_4.jpg"
+    },
+    {
+        "product_id": 15,
+        "product_picture": "public/imgs/appliance2/phone1/phone5_5.jpg"
+    }
+   
+]

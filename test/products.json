@@ -1,0 +1,124 @@
+
+[
+    {
+        "category_id": 1,
+        "product_id": 1,
+        "product_intro": "大学物理教程(简明版)(第二版) / 上海交通大学物理教研室 / 组编97873131",
+        "product_name": "大学物理",
+        "product_num": 2,
+        "product_picture": "public/imgs/book/book1.jpg",
+        "product_price": 10,
+        "product_sales": 0,
+        "product_selling_price": 10,
+        "product_title": "大学基础物理学"
+    },
+    {
+        "category_id": 1,
+        "product_id": 2,
+        "product_intro": "高等数学第七版 / 同济大学7版高数考研上下册 / 9787040396638 / 八五成新",
+        "product_name": "高等数学",
+        "product_num": 2,
+        "product_picture": "public/imgs/book/book2.jpg",
+        "product_price": 9,
+        "product_sales": 0,
+        "product_selling_price": 9,
+        "product_title": "高等数学"
+    },
+    {
+        "category_id": 1,
+        "product_id": 3,
+        "product_intro": "计算机网络第7版 / 第七版谢希仁著 / 电子工业出版社 / 9787121302954 / 八五成新",
+        "product_name": "计算机网络",
+        "product_num": 8,
+        "product_picture": "public/imgs/book/book3.jpg",
+        "product_price": 15,
+        "product_sales": 0,
+        "product_selling_price": 14,
+        "product_title": "计算机网络"
+    },
+    {
+        "category_id": 1,
+        "product_id": 4,
+        "product_intro": "软件需求工程 / (第2版，大学计算机教材系列) 毋国庆 / 9787111417354 / 八成新",
+        "product_name": "软件需求工程",
+        "product_num": 5,
+        "product_picture": "public/imgs/book/book4.jpg",
+        "product_price": 15,
+        "product_sales": 0,
+        "product_selling_price": 10,
+        "product_title": "软件需求工程"
+    },
+    {
+        "category_id": 1,
+        "product_id": 5,
+        "product_intro": "离散数学及其应用 / 第二版第2版 傅彦 / 高等教育出版社 / 9787040371482 / 八成新",
+        "product_name": "离散数学",
+        "product_num": 3,
+        "product_picture": "public/imgs/book/book5.jpg",
+        "product_price": 12,
+        "product_sales": 0,
+        "product_selling_price": 10,
+        "product_title": "离散数学及其应用"
+    }
+    ,
+    {
+        "category_id": 1,
+        "product_id": 6,
+        "product_intro": "考研资料概率论与数理统计 / 第四4版 / 教材+习题全解指南/盛骤，谢式千，潘承毅 / 九成新",
+        "product_name": "概率论",
+        "product_num": 2,
+        "product_picture": "public/imgs/book/book6.png",
+        "product_price": 10,
+        "product_sales": 0,
+        "product_selling_price": 9,
+        "product_title": "概率论与数理统计"
+    },
+    {
+        "category_id": 1,
+        "product_id": 7,
+        "product_intro": "数据库系统概论第5版 / 第五版王珊萨师煊 / 高等教育出版社 / 9787040406 / 八成新",
+        "product_name": "数据库系统概论",
+        "product_num": 10,
+        "product_picture": "public/imgs/book/book7.jpg",
+        "product_price": 15,
+        "product_sales": 0,
+        "product_selling_price": 15,
+        "product_title": "数据库系统概论"
+    },
+    {
+        "category_id": 1,
+        "product_id": 8,
+        "product_intro": "VUE.JS快速入门 / 正版书籍 / 九九成新",
+        "product_name": "Vue.js快速入门",
+        "product_num": 20,
+        "product_picture": "public/imgs/book/book8.jpg",
+        "product_price": 25,
+        "product_sales": 0,
+        "product_selling_price": 20,
+        "product_title": "Vue.js快速入门"
+    },
+    {
+        "category_id": 1,
+        "product_id": 9,
+        "product_intro": "JavaScript高级程序设计 / 第4版 / [美]马特·弗里斯比(MattFrisbie) / 九成新",
+        "product_name": "JavaScript高级程序设计",
+        "product_num": 10,
+        "product_picture": "public/imgs/book/book9.jpg",
+        "product_price": 25,
+        "product_sales": 0,
+        "product_selling_price": 25,
+        "product_title": "JavaScript高级程序设计"
+    },
+    {
+        "category_id": 1,
+        "product_id": 10,
+        "product_intro": "马克思主义基本原理概论(2018年版) / 9787040494792 / 九成新",
+        "product_name": "马克思主义基本原理概论",
+        "product_num": 7,
+        "product_picture": "public/imgs/book/book10.jpg",
+        "product_price": 10,
+        "product_sales": 0,
+        "product_selling_price": 10,
+        "product_title": "马克思主义基本原理概论"
+    }
+]

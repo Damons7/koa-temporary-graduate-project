@@ -1,0 +1,18 @@
+[
+    {
+        "category_id": 1,
+        "category_name": "书籍"
+    },
+    {
+        "category_id": 2,
+        "category_name": "电子设备"
+    },
+    {
+        "category_id": 3,
+        "category_name": "娱乐"
+    },
+    {
+        "category_id": 4,
+        "category_name": "其他宝藏"
+    }
+]
