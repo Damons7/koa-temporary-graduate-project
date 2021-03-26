@@ -16,15 +16,18 @@ module.exports = {
   },
   //更新购物车商品数量
   UpdateShoppingCart: async (NewNum, user_id, product_id) => {
-    return await ShoppingCart.updateOne({ $and: [{ user_id: user_id }, { product_id: product_id }] }, { $set: { product_num: NewNum } });
+    return await ShoppingCart.updateOne({
+      $and: [{ user_id: user_id },
+      { product_id: product_id }]
+    }, { $set: { product_num: NewNum } });
   },
   // // 新插入购物车信息
-  AddShoppingCart: async (user_id, product_id,from_user) => {
+  AddShoppingCart: async (user_id, product_id, from_user) => {
     return await ShoppingCart.insertMany([{
       user_id: user_id,
       product_id: product_id,
       product_num: 1,
-      from_user:from_user
+      from_user: from_user
     }]);
   },
   // // 删除购物车信息

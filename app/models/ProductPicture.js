@@ -4,11 +4,12 @@ const Schema = mongoose.Schema;
 const productPictureSchema = new Schema({
     //图片id
     product_id: {
-        type: Number,
+        required: true,
+        type: String,
     },
     //商品照片
     product_picture: {
-        type: String,
+        type: Object,
     },
     //创建日期
     date: {

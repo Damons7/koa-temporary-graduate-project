@@ -4,8 +4,9 @@
  */
 const Router = require('koa-router');
 const productController = require('../../controllers/productController')
-
+const passport = require('koa-passport')//passport引入   （验证邮箱密码工具）
 const productRouter = new Router();
+const { productsUpload } = require('../../middleware/Multer');
 
 productRouter
   .post('/product/getPromoProduct', productController.GetPromoProduct)
@@ -15,4 +16,9 @@ productRouter
   .post('/product/getCategory', productController.GetCategory)
   .post('/product/getProductByCategory', productController.GetProductByCategory)
   .post('/product/getProductBySearch', productController.GetProductBySearch)
+  .post('/product/getAddProduct', passport.authenticate('jwt', { session: false }), productController.GetAddProduct)
+  .post('/product/addProduct', passport.authenticate('jwt', { session: false }),
+    productsUpload.array('file', 5), productController.AddProduct)
+    .post('/product/updateProduct', passport.authenticate('jwt', { session: false }),
+    productsUpload.array('file', 5), productController.UpdateProduct)
 module.exports = productRouter;

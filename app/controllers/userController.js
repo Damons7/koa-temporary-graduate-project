@@ -227,8 +227,9 @@ module.exports = {
     */
     UploadAvatar: async ctx => {
         const { user_id } = ctx.req.body;
-        const { path } = ctx.req.file
-        const updateResult = await userDao.updateAvatarByUserId(user_id, path);
+        const { filename } = ctx.req.file
+        const prefix = 'public/imgs/userAvatar/'
+        const updateResult = await userDao.updateAvatarByUserId(user_id, prefix+filename);
         updateResult.ok === 1 ?
             ctx.body = {
                 code: '001',
@@ -346,7 +347,7 @@ module.exports = {
             msg: '删除失败成功'
         }
         return;
-    },
+    },                                                                                                                                                                                                                
 
     /**
      * 更新用户地址

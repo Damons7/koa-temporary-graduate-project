@@ -10,9 +10,9 @@ const productSchema = new Schema({
     },
     //	商品id
     product_id: {
-        type: Number,
+        type: String,
         required: true,
-        // default: generateUUID(),
+        default: 'Damons7' + generateUUID(),
         unique: true
     },
     //商品详细介绍
@@ -29,6 +29,11 @@ const productSchema = new Schema({
         type: Number,
         default: 0
     },
+    //上架商家
+    from_user: {
+        type: String,
+        required: true
+    },
     //商品照片
     product_picture: {
         type: String,
@@ -41,12 +46,17 @@ const productSchema = new Schema({
     product_selling_price: {
         type: Number,
     },
+    //商品标题
     product_title: {
         type: String,
     },
     //商品卖出数量
     product_sales: {
         type: Number,
+        default: 0,
+    },
+    deliveryType:{
+        type: String,
     },
     //创建日期
     date: {
