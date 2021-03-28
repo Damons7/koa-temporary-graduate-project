@@ -89,10 +89,8 @@ module.exports = {
      * @param {Object} ctx
      */
     Register: async ctx => {
-
         const { email, password } = ctx.request.body;
         const { errors, isValid } = validateRegisterInput(ctx.request.body);
-
         //判断表单验证
         if (!isValid) {
             ctx.status = 400;

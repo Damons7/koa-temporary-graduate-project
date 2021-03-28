@@ -25,7 +25,7 @@ module.exports = {
   //通过用户id（user_id）更新用户数据
   updateUserByUserId: async (user_id, updateData) => {
     updateData.updateDate = new Date()
-    return await User.updateOne({ uuid: user_id }, { $set: updateData });
+    return await User.updateOne({ uuid: user_id }, { $set: { updateDate: new Date(), ...updateData } });
   },
   //通过用户id（user_id）修改密码
   updatePasswordByUserId: async (user_id, newPassword) => {
@@ -37,7 +37,7 @@ module.exports = {
   },
   //修改默认地址
   updateAddressIsDefaultByUserId: async user_id => {
-    return await Address.updateOne({ user_id: user_id, isDefault: true }, { $set: { isDefault: false } });
+    return await Address.updateOne({ user_id: user_id, isDefault: true }, { $set: { isDefault: false,updateDate:new Date() } });
   },
   //添加地址
   addAddress: async data => {
@@ -49,6 +49,6 @@ module.exports = {
   },
   //更新地址
   updateAddressById: async (_id, updateData) => {
-    return await Address.updateOne({ _id: _id }, { $set: updateData });
+    return await Address.updateOne({ _id: _id }, { $set: {updateDate:new Date(),...updateData} });
   }
 }

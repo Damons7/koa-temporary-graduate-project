@@ -27,14 +27,12 @@ const userSchema =new Schema({
     //性别
     gender:{
         type:String,
+        default:'男'
     },
     //年龄
     age:{
         type:Number,
-    },
-    //个性签名
-    detail:{
-        type:Number,
+        default:0
     },
     //头像
     avatar:{

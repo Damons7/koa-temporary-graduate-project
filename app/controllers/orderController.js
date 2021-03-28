@@ -71,22 +71,53 @@ module.exports = {
 
     let data = [];
     // 根据数据库表结构生成字段信息
-    products.forEach(item => {
-
+    //  products.map(item => {
+    //   const hasProduct = await productDao.GetProductByProductId(item.productID);
+    //   if (hasProduct.product_num - hasProduct.product_sales === 0) {
+    //     ctx.body = {
+    //       code: '003',
+    //       msg: '购物车商品库存不足！'
+    //     }
+    //     return
+    //   }
+    //   const product =
+    //   {
+    //     order_id: orderID,
+    //     user_id: user_id,
+    //     product_id: item.productID,
+    //     product_num: item.num,
+    //     product_name: item.productName,
+    //     product_img: item.productImg,
+    //     product_price: item.price,
+    //     from_user: item.from_user,
+    //     address: address
+    //   };
+    //   data.push(product)
+    // })
+    for(let i=0;i<products.length;i++){
+        const hasProduct = await productDao.GetProductByProductId(products[i].productID);
+      if (hasProduct.product_num - hasProduct.product_sales === 0) {
+        ctx.body = {
+          code: '003',
+          msg: '购物车商品库存不足！'
+        }
+        return
+      }
       const product =
       {
         order_id: orderID,
         user_id: user_id,
-        product_id: item.productID,
-        product_num: item.num,
-        product_name: item.productName,
-        product_img: item.productImg,
-        product_price: item.price,
-        from_user: item.from_user,
+        product_id: products[i].productID,
+        product_num: products[i].num,
+        product_name: products[i].productName,
+        product_img: products[i].productImg,
+        product_price: products[i].price,
+        from_user: products[i].from_user,
         address: address
       };
       data.push(product)
-    })
+    }
+
 
     try {
       // 把订单信息插入数据库
@@ -99,6 +130,7 @@ module.exports = {
           const res = await shoppingCartDao.DeleteShoppingCart(user_id, products[i].productID);
           rows += res.ok;
         }
+
         //判断删除购物车是否成功
         if (rows != products.length) {
           ctx.body = {

@@ -44,6 +44,7 @@ const ordersSchema = new Schema({
     product_price: {
         type: Number,
     },
+    //上架商家
     from_user: {
         type: String,
         required: true,
