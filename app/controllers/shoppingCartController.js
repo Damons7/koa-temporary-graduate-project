@@ -24,7 +24,7 @@ let methods = {
         price: product[0].product_price,
         selling_price: product[0].product_selling_price,
         num: temp.product_num,
-        from_user:temp.from_user,
+        from_user: temp.from_user,
         maxNum: Math.floor(product[0].product_num / 2),
         check: false
       };
@@ -41,7 +41,7 @@ module.exports = {
    * @param {Object} ctx
    */
   GetShoppingCart: async ctx => {
-    let { user_id } = ctx.request.body; 
+    let { user_id } = ctx.request.body;
 
     // 获取购物车信息
     const shoppingCart = await shoppingCartDao.GetShoppingCart(user_id);
@@ -57,19 +57,27 @@ module.exports = {
    * @param {Object} ctx
    */
   AddShoppingCart: async ctx => {
-    const { user_id, product_id,from_user } = ctx.request.body;
+    const { user_id, product_id, from_user } = ctx.request.body;
+    //判断商品是否还有
+    const hasProduct = await productDao.GetProductByProductId(product_id);
+    if (hasProduct.length < 1 || hasProduct[0].product_num - hasProduct[0].product_sales === 0) {
+      ctx.body = {
+        code: '004',
+        msg: '商品库存不足！'
+      }
+      return
+    }
     const tempShoppingCart = await shoppingCartDao.FindShoppingCart(user_id, product_id);
     //判断该用户的购物车是否存在该商品
     if (tempShoppingCart.length > 0) {
       //如果存在则把数量+1
       const tempNum = tempShoppingCart[0].product_num + 1;
-      const product = await productDao.GetProductByProductId(tempShoppingCart[0].product_id);
-      const maxNum = Math.floor(product[0].product_num / 2);
+      const maxNum = Math.floor((hasProduct[0].product_num - hasProduct[0].product_sales) / 2);
       //判断数量是否达到限购数量
       if (tempNum > maxNum) {
         ctx.body = {
           code: '003',
-          msg: '数量达到限购数量 ' + maxNum
+          msg: '数量达到限购数量 ' + tempShoppingCart[0].product_num
         }
         return;
       }
@@ -86,14 +94,14 @@ module.exports = {
         }
       } catch (error) {
         console.log(error);
-        return ;
+        return;
       }
     } else {
       //不存在则添加
       try {
         // 新插入购物车信息
-        const res = await shoppingCartDao.AddShoppingCart(user_id, product_id,from_user);
- 
+        const res = await shoppingCartDao.AddShoppingCart(user_id, product_id, from_user);
+
         // 判断是否插入成功
         if (res.length === 1) {
           // 如果成功,获取该商品的购物车信息
@@ -110,7 +118,7 @@ module.exports = {
         }
       } catch (error) {
         console.log(error);
-        return ;
+        return;
       }
     }
 
@@ -133,7 +141,7 @@ module.exports = {
       // 如果存在则删除
       try {
         const result = await shoppingCartDao.DeleteShoppingCart(user_id, product_id);
-    
+
         // 判断是否删除成功
         if (result.deletedCount === 1) {
           ctx.body = {
@@ -144,7 +152,7 @@ module.exports = {
         }
       } catch (error) {
         console.log(error);
-        return ;
+        return;
       }
     } else {
       // 不存在则返回信息
@@ -183,7 +191,7 @@ module.exports = {
         return;
       }
       const product = await productDao.GetProductByProductId(product_id);
-  
+
       const maxNum = Math.floor(product[0].product_num / 2);
       // 判断数量是否达到限购数量
       if (num > maxNum) {
@@ -207,7 +215,7 @@ module.exports = {
         }
       } catch (error) {
         console.log(error);
-        return ;
+        return;
       }
     } else {
       //不存在则返回信息

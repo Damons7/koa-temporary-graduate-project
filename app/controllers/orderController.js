@@ -25,8 +25,8 @@ module.exports = {
       return;
     }
     let ordersList = [];
-
-    for (let j = 0; j < orders.length; j++) {
+    const len = orders.length;
+    for (let j = 0; j < len; j++) {
       let tempOrder = [];
       let order = {
         product_num: orders[j].product_num,
@@ -40,7 +40,7 @@ module.exports = {
         updateDate: orders[j].updateDate
       };
       // 获取每个商品详细信息
-      const product = await productDao.GetProductByProductId(order.product_id);
+      const product = await productDao.GetProductByProductId_order(order.product_id);
       order.product_name = product[0].product_name;
       order.product_picture = product[0].product_picture;
       const index = ordersList.findIndex(item => item[0].order_id === orders[j].order_id)
@@ -70,38 +70,23 @@ module.exports = {
     const orderID = `${user_id}${timeTemp}`;
 
     let data = [];
-    // 根据数据库表结构生成字段信息
-    //  products.map(item => {
-    //   const hasProduct = await productDao.GetProductByProductId(item.productID);
-    //   if (hasProduct.product_num - hasProduct.product_sales === 0) {
-    //     ctx.body = {
-    //       code: '003',
-    //       msg: '购物车商品库存不足！'
-    //     }
-    //     return
-    //   }
-    //   const product =
-    //   {
-    //     order_id: orderID,
-    //     user_id: user_id,
-    //     product_id: item.productID,
-    //     product_num: item.num,
-    //     product_name: item.productName,
-    //     product_img: item.productImg,
-    //     product_price: item.price,
-    //     from_user: item.from_user,
-    //     address: address
-    //   };
-    //   data.push(product)
-    // })
-    for(let i=0;i<products.length;i++){
-        const hasProduct = await productDao.GetProductByProductId(products[i].productID);
-      if (hasProduct.product_num - hasProduct.product_sales === 0) {
+    const len = products.length;
+    for (let i = 0; i < len; i++) {
+      const hasProduct = await productDao.GetProductByProductId_order(products[i].productID);
+      if (hasProduct[0].product_num - hasProduct[0].product_sales === 0) {
         ctx.body = {
           code: '003',
           msg: '购物车商品库存不足！'
         }
         return
+      }
+      const isSales = await productDao.UpdateProductSales(products[i].productID);
+      //更新商品销量
+      if (isSales.ok === 1) {
+        //商品销量达到商品数量，自动下架商品
+        if (hasProduct[0].product_num - hasProduct[0].product_sales - 1 === 0) {
+          await productDao.UpdateProductState(products[i].productID);
+        }
       }
       const product =
       {
@@ -117,8 +102,6 @@ module.exports = {
       };
       data.push(product)
     }
-
-
     try {
       // 把订单信息插入数据库
       const result = await orderDao.AddOrder(data);

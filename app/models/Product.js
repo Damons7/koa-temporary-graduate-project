@@ -24,6 +24,12 @@ const productSchema = new Schema({
         type: String,
         required: true
     },
+    //	商品上架/下架 (1代表上架，0代表下架，默认设为1)
+    product_state: {
+        type: Number,
+        required: true,
+        default: 1
+    },
     //商品数量
     product_num: {
         type: Number,
@@ -55,7 +61,7 @@ const productSchema = new Schema({
         type: Number,
         default: 0,
     },
-    deliveryType:{
+    deliveryType: {
         type: String,
     },
     //创建日期
