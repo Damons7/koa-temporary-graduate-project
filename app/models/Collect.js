@@ -9,7 +9,7 @@ const collectSchema = new Schema({
     },
     //	商品id
     product_id: {
-        type: Number,
+        type: String,
         required: true,
         // default: generateUUID(),
         unique: true

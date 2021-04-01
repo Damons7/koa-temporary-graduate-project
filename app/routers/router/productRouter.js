@@ -19,6 +19,7 @@ productRouter
   .post('/product/getAddProduct', passport.authenticate('jwt', { session: false }), productController.GetAddProduct)
   .post('/product/addProduct', passport.authenticate('jwt', { session: false }),
     productsUpload.array('file', 5), productController.AddProduct)
-    .post('/product/updateProduct', passport.authenticate('jwt', { session: false }),
+  .post('/product/updateProduct', passport.authenticate('jwt', { session: false }),
     productsUpload.array('file', 5), productController.UpdateProduct)
+    .post('/product/returnProduct', passport.authenticate('jwt', { session: false }), productController.ReturnProduct)
 module.exports = productRouter;

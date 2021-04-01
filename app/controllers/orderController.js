@@ -36,8 +36,9 @@ module.exports = {
         user_id: orders[j].user_id,
         product_id: orders[j].product_id,
         product_price: orders[j].product_price,
+        from_user: orders[j].from_user,
         date: orders[j].date,
-        updateDate: orders[j].updateDate
+        updateDate: orders[j].updateDate,
       };
       // 获取每个商品详细信息
       const product = await productDao.GetProductByProductId_order(order.product_id);
@@ -167,5 +168,47 @@ module.exports = {
       orders: ordersList
     }
 
+  },
+
+  /**
+ * 确认收货
+ * @param {Object} ctx
+ */
+  OnOKOrder: async (ctx) => {
+    const { order_id, product_id, from_user } = ctx.request.body;
+    const updateResult = await orderDao.onOKUpdateOrders(order_id, product_id, from_user);
+
+    if (updateResult.ok === 1) {
+      ctx.body = {
+        code: '001',
+        msg: '已确认收货'
+      }
+      return;
+    }
+    ctx.body = {
+      code: '002',
+      msg: '确认收货失败'
+    }
+  },
+
+  /**
+* 确认退货
+* @param {Object} ctx
+*/
+  ReturnOrder: async (ctx) => {
+    const { order_id, product_id, from_user } = ctx.request.body;
+    const updateResult = await orderDao.returnUpdateOrders(order_id, product_id, from_user);
+
+    if (updateResult.ok === 1) {
+      ctx.body = {
+        code: '001',
+        msg: '退货成功'
+      }
+      return;
+    }
+    ctx.body = {
+      code: '002',
+      msg: '退货失败'
+    }
   }
 }

@@ -17,7 +17,17 @@ module.exports = {
   // 发货，更新订单信息，状态更改
   updateOrdersByDelivery: async (order_id, product_id, from_user) => {
     return await Orders.updateOne({ $and: [{ order_id: order_id }, { product_id: product_id }, { from_user: from_user }] },
-      { $set: { order_state: "发货中" } });
+      { $set: { order_state: "待收货", updateDate: new Date() } });
+  },
+  //确认收货，更新订单信息，状态更改
+  onOKUpdateOrders: async (order_id, product_id, from_user) => {
+    return await Orders.updateOne({ $and: [{ order_id: order_id }, { product_id: product_id }, { from_user: from_user }] },
+      { $set: { order_state: "已收货", updateDate: new Date() } });
+  },
+  //退货，更新订单信息，状态更改
+  returnUpdateOrders: async (order_id, product_id, from_user) => {
+    return await Orders.updateOne({ $and: [{ order_id: order_id }, { product_id: product_id }, { from_user: from_user }] },
+      { $set: { order_state: "已退货", updateDate: new Date() } });
   },
   // 根据上架人查询订单
   getOrdersByDelivery: async from_user => {

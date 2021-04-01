@@ -34,6 +34,9 @@ module.exports = {
   GetDetailsPicture: async productID => {
     return await ProductPicture.find({ product_id: productID })
   },
+  GetDetailsPicturetest: async () => {
+    return await ProductPicture.find({ })
+  },
   // 分页获取所有的商品信息
   GetAllProduct: async (offset = 0, rows = 0) => {
     return await Product.find({ product_state: 1 }).skip(offset).limit(rows);
@@ -74,8 +77,8 @@ module.exports = {
       { $set: { updateDate: new Date(), product_picture: imgs } })
   },
   //下架商品，更新上架商品state，
-  UpdateProductState: async (productID) => {
-    return await Product.updateOne({ product_id: productID },
+  UpdateProductState: async (product_id) => {
+    return await Product.updateOne({ product_id: product_id },
       { $set: { updateDate: new Date(), product_state: 0 } })
   }
 }

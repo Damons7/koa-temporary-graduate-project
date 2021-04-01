@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const shoppingCartSchema = new Schema({
     //	商品id
     product_id: {
-        type: Number,
+        type: String,
         required: true
     },
     //用户

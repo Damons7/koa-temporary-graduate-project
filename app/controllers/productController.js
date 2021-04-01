@@ -234,12 +234,12 @@ module.exports = {
   * 更新上架商品
   * @param {Object} ctx
   */
-   UpdateProduct: async ctx => {
+  UpdateProduct: async ctx => {
     const { productsData } = ctx.req.body;
     const _productsData = JSON.parse(productsData);
     const fileArr = ctx.req.files; //图片数组
 
-    // // 根据商品分类名称获取分类id
+    // 根据商品分类名称获取分类id
     const category = await productDao.GetCategoryByName(_productsData.category_name);
     const categoryID = category.length && category[0].category_id;
     const data = {
@@ -253,7 +253,7 @@ module.exports = {
       deliveryType: _productsData.deliveryType,
       category_id: categoryID
     }
-    const result = await productDao.UpdateProduct(_productsData.product_id,data);
+    const result = await productDao.UpdateProduct(_productsData.product_id, data);
     const detail = await productDao.UpdateDetailsPicture(_productsData.product_id, fileArr.map(item => 'public' + item.path.split('public')[1]))
     if (result.ok === 1 && detail.ok === 1) {
       ctx.body = {
@@ -265,6 +265,27 @@ module.exports = {
     ctx.body = {
       code: '002',
       msg: '更新失败'
+    }
+  },
+
+  /**
+* 下架商品
+* @param {Object} ctx
+*/
+  ReturnProduct: async ctx => {
+    const { product_id } = ctx.request.body;
+    const result = await productDao.UpdateProductState(product_id);
+    
+    if (result.ok === 1) {
+      ctx.body = {
+        code: '001',
+        msg: '该商品已下架'
+      }
+      return;
+    }
+    ctx.body = {
+      code: '002',
+      msg: '下架失败'
     }
   }
 }

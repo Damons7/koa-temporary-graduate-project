@@ -23,7 +23,7 @@ const ordersSchema = new Schema({
     },
     //	商品id
     product_id: {
-        type: Number,
+        type: String,
         required: true,
     },
     //商品名称

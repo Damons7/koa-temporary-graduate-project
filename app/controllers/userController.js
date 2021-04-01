@@ -57,15 +57,9 @@ module.exports = {
                         userName: user.name,
                         uuid: user.uuid,
                         token: "Bearer " + token,
-                    }
+                    },
+                    msg:'登录成功'
                 }
-
-                // const loginUser = {
-                //     uuid: user.uuid,
-                //     sessionKey: session_key
-                //   };
-                //   // 保存用户信息到session
-                //   ctx.session.user = loginUser;
 
             } else {
                 ctx.status = 200;

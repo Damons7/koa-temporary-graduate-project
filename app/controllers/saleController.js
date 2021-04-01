@@ -46,7 +46,7 @@ module.exports = {
         let ordersList = [], obj = {}
         result.forEach(item => {
             const id = item.order_id
-            obj[id] ? obj[item.order_id].push(item) : (obj[id] = [item])
+            obj[id] ? obj[id].push(item) : (obj[id] = [item])
         })
         Object.keys(obj).forEach(item => {
             ordersList.push(obj[item])

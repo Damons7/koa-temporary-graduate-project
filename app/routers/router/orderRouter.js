@@ -11,4 +11,7 @@ orderRouter
   .post('/users/order/getOrder',passport.authenticate('jwt', { session: false }), orderController.GetOrder)
   .post('/users/order/addOrder', passport.authenticate('jwt', { session: false }),orderController.AddOrder)
   .post('/users/order/orderDetails',passport.authenticate('jwt', { session: false }), orderController.OrderDetails)
+  .post('/users/order/onOKOrder',passport.authenticate('jwt', { session: false }), orderController.OnOKOrder)
+  .post('/users/order/returnOrder',passport.authenticate('jwt', { session: false }), orderController.ReturnOrder)
+
 module.exports = orderRouter;
